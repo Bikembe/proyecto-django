@@ -1,0 +1,50 @@
+{% extends "inicio/encabezado.html" %}
+
+{% block contenido %}
+<div class="page-content">
+
+    <div class="page-header">
+        <div class="page-title">
+            <h3>
+                <small>Lista de Cursos</small>
+            </h3>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Duración (horas)</th>
+            <th>Precio</th>
+            <th>Categoría</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for curso in cursos %}
+        <tr>
+            <td class="text-center">
+                {% if curso.imagen %}
+                    <img src="{{ curso.imagen.url }}" alt="{{ curso.nombre }}" style="max-width: 100px;">
+                {% else %}
+                    Sin imagen
+                {% endif %}
+            </td>
+            <td>{{ curso.nombre }}</td>
+            <td>{{ curso.descripcion|default:"-" }}</td>
+            <td>{{ curso.duracion_horas }}</td>
+            <td>${{ curso.precio }}</td>
+            <td>{{ curso.categoria }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="8">No hay cursos disponibles.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</div>
+{% endblock %}

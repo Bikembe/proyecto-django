@@ -1,0 +1,33 @@
+{% extends "inicio/encabezado.html" %}
+
+{% block titulo %}Contacto{% endblock %}
+
+{% block contenido %}
+<h1>Formulario para solicitar información</h1>
+<form>
+    <div class="mb-3">
+        <label>Nombre:</label>
+        <input type="text" class="form-control" name="nombre">
+    </div>
+    <div class="mb-3">
+        <label>Correo electrónico:</label>
+        <input type="email" class="form-control" name="correo">
+    </div>
+    <div class="mb-3">
+        <label>Cursos:</label>
+        <select class="form-select" name="cursos">
+    {% for curso in cursos %}
+        <option value="{{ curso.id }}">{{ curso.nombre }}</option>
+    {% empty %}
+        <option>No hay cursos disponibles</option>
+    {% endfor %}
+</select>
+
+    </div>
+    <div class="mb-3">
+        <label>Comentarios:</label>
+        <textarea class="form-control" rows="4"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+{% endblock %}
