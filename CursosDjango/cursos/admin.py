@@ -1,22 +1,18 @@
-# cursos/admin.py
 from django.contrib import admin
 from .models import Curso
+from .models import Comentario
+
+admin.site.site_header = "Panel de Administración"
+admin.site.site_title = "Cursos | Admin"
+admin.site.index_title = "Bienvenido al panel de gestión"
+
 
 @admin.register(Curso)
 class CursoAdmin(admin.ModelAdmin):
-    # Campos que se muestran en la lista
     list_display = ('nombre', 'categoria', 'duracion_horas', 'precio', 'activo', 'fecha_creacion')
-    
-    # Ordenar por fecha de creación de más antiguo a más reciente
     ordering = ('fecha_creacion',)
-    
-    # Barra de búsqueda (busca en nombre y categoría)
     search_fields = ('nombre', 'categoria')
-    
-    # Filtros laterales (filtra por activo y categoría)
     list_filter = ('activo', 'categoria', 'fecha_creacion')
-    
-    # Campos que se muestran y etiquetas en el formulario de registro/edición
     fieldsets = (
         (None, {
             'fields': ('nombre', 'descripcion', 'categoria', 'duracion_horas', 'precio', 'activo')
@@ -27,5 +23,13 @@ class CursoAdmin(admin.ModelAdmin):
         }),
     )
     
-    readonly_fields = ('fecha_creacion',)  # Campo automático, solo lectura
+    readonly_fields = ('fecha_creacion',)
+
+class AdministrarComentarios(admin.ModelAdmin):
+    list_display = ('id','coment')
+    search_fields = ('id','created')
+    date_hierarchy = ('created')
+    readonly_fields = ('created','id')
+
+admin.site.register(Comentario,AdministrarComentarios)
 

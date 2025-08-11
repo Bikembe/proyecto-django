@@ -1,4 +1,3 @@
-# cursos/apps.py
 from django.apps import AppConfig
 
 class CursosConfig(AppConfig):

@@ -20,6 +20,8 @@
             <th>Duración (horas)</th>
             <th>Precio</th>
             <th>Categoría</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
         </tr>
     </thead>
     <tbody>
@@ -37,6 +39,12 @@
             <td>{{ curso.duracion_horas }}</td>
             <td>${{ curso.precio }}</td>
             <td>{{ curso.categoria }}</td>
+            <td>
+                <a href="{% url 'editar_curso' curso.pk %}" class="btn btn-sm btn-primary">Editar</a>
+            </td>
+            <td>
+                <a href="{% url 'eliminar_curso' curso.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
         </tr>
         {% empty %}
         <tr>
@@ -45,6 +53,7 @@
         {% endfor %}
     </tbody>
 </table>
+
 
 </div>
 {% endblock %}

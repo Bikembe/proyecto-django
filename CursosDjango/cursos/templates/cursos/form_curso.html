@@ -1,0 +1,13 @@
+{% extends "inicio/encabezado.html" %}
+
+{% block contenido %}
+<div class="container">
+    <h3>{{ titulo }}</h3>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="{% url 'lista_cursos' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

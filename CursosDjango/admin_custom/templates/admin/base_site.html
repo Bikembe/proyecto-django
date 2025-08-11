@@ -1,0 +1,23 @@
+{# admin_custom/templates/admin/base_site.html #}
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}Cursos | Admin{% endblock %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'admin_custom/css/custom.css' %}">
+{% endblock %}
+
+{% block extrahead %}
+    <script src="{% static 'admin_custom/js/custom.js' %}"></script>
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">Panel Cursos</a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}
+    <div style="padding: 10px;">Desarrollado por Bikembe</div>
+{% endblock %}
